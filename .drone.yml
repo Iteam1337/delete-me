@@ -9,6 +9,7 @@ pipeline:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:rw
     commands:
+      - export REPO=iteam1337/delete-me
       - docker build --pull --rm -t ${REPO}:test -f ./Dockerfile.test .
       - docker run --rm ${REPO}:test
     when:
