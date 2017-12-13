@@ -1,18 +1,18 @@
 pipeline:
 
-  run_tests:
-    image: docker:17.09.0-ce
-    environment:
-      - TZ=Europe/Stockholm
-      - DOCKER_HOST=unix:///var/run/docker.sock
-      - DRONE_REPO=iteam1337/delete-me
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:rw
-    commands:
-      - docker build --pull --rm -t iteam1337/delete-me:test -f ./Dockerfile.test .
-      - docker run --rm iteam1337/delete-me:test
-    when:
-      event: [push, pull_request, tag]
+  # run_tests:
+  #   image: docker:17.09.0-ce
+  #   environment:
+  #     - TZ=Europe/Stockholm
+  #     - DOCKER_HOST=unix:///var/run/docker.sock
+  #     - DRONE_REPO=iteam1337/delete-me
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock:rw
+  #   commands:
+  #     - docker build --pull --rm -t iteam1337/delete-me:test -f ./Dockerfile.test .
+  #     - docker run --rm iteam1337/delete-me:test
+  #   when:
+  #     event: [push, pull_request, tag]
 
   clair:
     image: jmccann/drone-clair:1
